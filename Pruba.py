@@ -6,11 +6,11 @@ class Pagina1:
     self.client=OpenAI(api_key = secrets.OpenAIAPI.openai_api_key)
     prompt = "Simula ser Harvey Specter"
     if "trip_adviser_messages" not in st.session_state:
-      st.session_state["Harvey_Specter"] = ["role": "system", "content": prompt]
+      st.session_state["Harvey_Specter"] = ["role" : "system", "content": prompt]
     
     def communicate():
       messages = st.session_state["Harvey_Specter"]
-      user_message = {"role": "user", "content": st.session_state["user_input"]}
+      user_message = {"role" : "user", "content": st.session_state["user_input"]}
       messages.append(user_message)
       response = client.chat.completions.create(model="gpt-3.5-turbo", messages=messages)
       bot_message = response.choices[0].message
@@ -42,11 +42,11 @@ class Pagina2:
       prompt2 = "Simula ser Mike Ross"
       
       if "trip_adviser_messages" not in st.session_state:
-      st.session_state["Mike_Ross"] = ["role": "system", "content": prompt2]
+      st.session_state["Mike_Ross"] = ["role" : "system", "content": prompt2]
     
     def communicate():
       messages = st.session_state["Mike_Ross"]
-      user_message = {"role": "user", "content": st.session_state["user_input"]}
+      user_message = {"role" : "user", "content": st.session_state["user_input"]}
       messages.append(user_message)
       response = client.chat.completions.create(model="gpt-3.5-turbo", messages=messages)
       bot_message = response.choices[0].message
