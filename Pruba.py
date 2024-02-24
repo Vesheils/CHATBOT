@@ -1,9 +1,9 @@
 import streamlit as st
-from openai import openai
+from openai import OpenAI
 
 class Pagina1:
     def __init__(self):
-        self.client = openai(api_key=secret_keys.openai_api_key)
+        self.client = OpenAI(api_key=secret_keys.openai_api_key)
         prompt = "Simula ser Harvey Specter"
         if "Harvey_Specter" not in st.session_state:
             st.session_state["Harvey_Specter"] = [{"role": "system", "content": prompt}]
@@ -35,7 +35,7 @@ class Pagina1:
 
 class Pagina2:
     def __init__(self):
-        self.client = openai(api_key=secret_keys.openai_api_key)
+        self.client = OpenAI(api_key=secret_keys.openai_api_key)
         prompt2 = "Simula ser Mike Ross"
         if "Mike_Ross" not in st.session_state:
             st.session_state["Mike_Ross"] = [{"role": "system", "content": prompt2}]
