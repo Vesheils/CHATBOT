@@ -8,7 +8,7 @@ client = OpenAI(api_key = st.secrets.OpenAIAPI.openai_apikey)
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
-  {"role": "system", "content": "Piensa como un Desarrollador"}
+  {"role": "system", "content": "Piensa como un dungeonmaster"}
 ]
 
 
