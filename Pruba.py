@@ -2,7 +2,7 @@ import streamlit as st
 from openai import openai
 
 class Pagina1:
-  def__init__(self):
+  def__init__(self)
     self.client=OpenAI(api_key = secrets.OpenAIAPI.openai_api_key)
       
       prompt = "Simula ser Harvey Specter"
