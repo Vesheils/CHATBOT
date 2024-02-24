@@ -55,15 +55,15 @@ class Pagina2:
     
         user_input = st.text_input("Por favor ingrese un mensaje aquí.", key="user_input", on_change=self.communicate)
 
-        if st.session_state["Mike_Ross"]:
-            messages = st.session_state["Mike_Ross"]
+        messages = st.session_state.get("Mike_Ross", [])  # Obtener messages de st.session_state, si no está presente, retornar una lista vacía
 
-        for message in reversed(messages[1:]):
-            if isinstance(message, dict):
-                speaker = "😎" if message["role"] == "user" else "🤖"
-                st.write(speaker + ": " + message["content"])
-            else:
-                st.write("🤖: " + message.content)
+        if messages:
+            for message in reversed(messages[1:]):
+                if isinstance(message, dict):
+                    speaker = "😎" if message["role"] == "user" else "🤖"
+                    st.write(speaker + ": " + message["content"])
+                else:
+                    st.write("🤖: " + message.content)
 
 def main():
     sidebar = st.sidebar
