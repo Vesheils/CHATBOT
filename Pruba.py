@@ -71,10 +71,11 @@ def main():
     page = sidebar.radio("Seleccione", ["PRUEBA1", "PRUEBA2"])
 
     if page == "PRUEBA1":
-        Pagina1()
+        pagina1 = Pagina1()  # Crear una instancia de Pagina1
+        pagina1.run()  # Llamar al método run() para mostrar la página
     elif page == "PRUEBA2":
         st.session_state["Mike_Ross"] = []
-        Pagina2()
+        Pagina2().run()  # Llamar directamente al método run() para Pagina2
 
 if __name__ == "__main__":
     main()
