@@ -3,18 +3,22 @@ from openai import OpenAI
 
 class Pagina1:
     def __init__(self):
-        self.client=OpenAI(api_key = "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")
+        self.client = OpenAI(api_key="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")
         prompt = "Simula ser Harvey Specter"
         if "Harvey_Specter" not in st.session_state:
             st.session_state["Harvey_Specter"] = [{"role": "system", "content": prompt}]
     
     def communicate(self):
-        messages = st.session_state["Harvey_Specter"]
-        user_message = {"role": "user", "content": st.session_state["user_input"]}
-        messages.append(user_message)
+        messages = [{"role": "system", "content": "Simula ser Harvey Specter"}]  # Inicializamos messages con el mensaje de sistema
+        user_input = st.session_state.get("user_input", "")  # Obtenemos el input del usuario
+        if user_input:  # Si hay input de usuario, agregamos su mensaje a messages
+            messages.append({"role": "user", "content": user_input})
+
         response = self.client.chat.completions.create(model="gpt-3.5-turbo", messages=messages)
         bot_message = response.choices[0].message
-        messages.append(bot_message)
+        messages.append({"role": "system", "content": bot_message})  # Agregamos la respuesta del bot a messages
+
+        st.session_state["Harvey_Specter"] = messages  # Actualizamos los mensajes en la sesión
 
     def run(self):
         st.session_state["user_input"] = ""
@@ -23,15 +27,10 @@ class Pagina1:
     
         user_input = st.text_input("Por favor ingrese un mensaje aquí.", key="user_input", on_change=self.communicate)
 
-        if st.session_state["Harvey_Specter"]:
-            messages = st.session_state["Harvey_Specter"]
-
-        for message in reversed(messages[1:]):
-            if isinstance(message, dict):
-                speaker = "😎" if message["role"] == "user" else "🤖"
-                st.write(speaker + ": " + message["content"])
-            else:
-                st.write("🤖: " + message.content)
+        messages = st.session_state.get("Harvey_Specter", [])
+        for message in reversed(messages):
+            speaker = "😎" if message["role"] == "user" else "🤖"
+            st.write(f"{speaker}: {message['content']}")
 
 class Pagina2:
     def __init__(self):
