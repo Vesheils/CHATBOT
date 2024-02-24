@@ -3,7 +3,7 @@ from openai import OpenAI
 
 class Pagina1:
     def __init__(self):
-        self.client=OpenAI(api_key = secrets.OpenAIAPI.openai_api_key)
+        self.client=OpenAI(api_key = secrets.OpenAIAPI.openai_apikey)
         prompt = "Simula ser Harvey Specter"
         if "Harvey_Specter" not in st.session_state:
             st.session_state["Harvey_Specter"] = [{"role": "system", "content": prompt}]
@@ -35,7 +35,7 @@ class Pagina1:
 
 class Pagina2:
     def __init__(self):
-        self.client=OpenAI(api_key = secrets.OpenAIAPI.openai_api_key)
+        self.client=OpenAI(api_key = secrets.OpenAIAPI.openai_apikey)
         prompt2 = "Simula ser Mike Ross"
         if "Mike_Ross" not in st.session_state:
             st.session_state["Mike_Ross"] = [{"role": "system", "content": prompt2}]
