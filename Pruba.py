@@ -68,11 +68,11 @@ class Pagina2:
 def main():
     sidebar = st.sidebar
 
-    page = sidebar.radio("Seleccione", ["PRUEBA 1", "PRUEBA 2"])
+    page = sidebar.radio("Seleccione", ["PRUEBA1", "PRUEBA2"])
 
-    if page == "PRUEBA 1":
+    if page == "PRUEBA1":
         Pagina1()
-    elif page == "PRUEBA 2":
+    elif page == "PRUEBA2":
         st.session_state["Mike_Ross"] = []
         Pagina2()
 
