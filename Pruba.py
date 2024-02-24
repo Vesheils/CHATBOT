@@ -3,7 +3,7 @@ from openai import openai
 
 class Pagina1:
   def __init__(self):
-      self.client=OpenAI(api_key = secrets.OpenAIAPI.openai_api_key)
+    self.client=OpenAI(api_key = secrets.OpenAIAPI.openai_api_key)
       
       prompt = "Simula ser Harvey Specter"
       
