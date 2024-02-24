@@ -72,7 +72,7 @@ def main():
 
     if page == "PRUEBA 1":
         Pagina1()
-    elif page == "PRUEBA 2"
+    elif page == "PRUEBA 2":
         st.session_state["Mike_Ross"] = []
         Pagina2()
 
