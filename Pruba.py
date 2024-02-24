@@ -4,11 +4,9 @@ from openai import openai
 class Pagina1:
   def __init__(self):
     self.client=OpenAI(api_key = secrets.OpenAIAPI.openai_api_key)
-      
-      prompt = "Simula ser Harvey Specter"
-      
-      if "trip_adviser_messages" not in st.session_state:
-      st.session_state["Harvey_Specter"] = ["role": "system", "content": prompt]
+    prompt = "Simula ser Harvey Specter"
+    if "trip_adviser_messages" not in st.session_state:
+    st.session_state["Harvey_Specter"] = ["role": "system", "content": prompt]
     
     def communicate():
       messages = st.session_state["Harvey_Specter"]
